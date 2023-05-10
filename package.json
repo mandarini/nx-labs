@@ -8,7 +8,10 @@
     "nx-release": "./scripts/nx-release.mjs",
     "check-versions": "ts-node -P ./tools/tsconfig.tools.json ./tools/scripts/check-versions.ts",
     "start": "nx serve",
-    "test": "nx test"
+    "test": "nx test",
+    "ecosystem:test": "nx test rspack",
+    "ecosystem:build": "nx build rspack",
+    "ecosystem:e2e": "nx e2e rspack-e2e"
   },
   "dependencies": {
     "@swc/cli": "0.1.62",
@@ -68,4 +71,3 @@
     "typescript": "~4.9.5"
   }
 }
-
