@@ -34,7 +34,7 @@ describe('rspack e2e', () => {
     });
     expect(result.stdout).toContain('Successfully ran target build');
     // Make sure expected files are present.
-    expect(listFiles(`dist/${project}`)).toHaveLength(4);
+    expect(listFiles(`dist/${project}`)).toHaveLength(5);
 
     result = await runNxCommandAsync(`test ${project}`);
     expect(result.stdout).toContain('Successfully ran target test');
