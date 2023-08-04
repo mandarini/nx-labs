@@ -31,16 +31,26 @@ describe('nx-ignore e2e', () => {
         2
       )
     );
-    runCommand(`git init`, {});
-    runCommand(`git add .`, {});
-    runCommand(`git commit -m 'init'`, {});
+    console.log('Hello I am running git init');
+    const result1 = runCommand(`git init`, {});
+    console.log('RESULT 1', result1);
+    console.log('Hello I am running git add');
+    const result2 = runCommand(`git add .`, {});
+    console.log('RESULT 2', result2);
+    runCommand(`git config user.email "you@example.com"`, {});
+    runCommand(`git config user.name "Your Name"`, {});
+    console.log('Hello I am running git commit');
+    const result3 = runCommand(`git commit -m 'init'`, {});
+    console.log('RESULT 3', result3);
   });
 
   it('should deploy if the latest commit touches the project', async () => {
     writeFileSync(join(projRoot, 'main.ts'), `console.log('bye');\n`);
-    runCommand('git commit -am "update main"', {});
+    const result4 = runCommand('git commit -am "update main"', {});
+    console.log('RESULT 4', result4);
 
     let result = runCommand(`npx nx-ignore ${proj}`, {});
+    console.log('RESULT 5', result);
     expect(result).toMatch(/Build can proceed/);
 
     runCommand('git commit -m "nothing" --allow-empty', {});

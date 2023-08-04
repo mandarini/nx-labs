@@ -44,6 +44,13 @@ if (!project) {
 main();
 
 async function main() {
+  try {
+
+    const result6 = execSync(`git log -1 --pretty='%B'`).toString();
+    console.log('RESULT 6', result6);
+  } catch (e) {
+    console.log('ERROR', e);
+  }
   const commitMessage = execSync(`git log -1 --pretty='%B'`).toString();
 
   if (commitHasSkipMessage(commitMessage)) {
